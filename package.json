@@ -1,0 +1,23 @@
+{
+  "name": "e-dukan",
+  "version": "1.0.0",
+  "description": "ECommerce website using MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bhushan-Thombre/E-Dukan.git"
+  },
+  "author": "Bhushan Thombre",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bhushan-Thombre/E-Dukan/issues"
+  },
+  "homepage": "https://github.com/Bhushan-Thombre/E-Dukan#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
