@@ -19,7 +19,7 @@ const ProductScreen = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
 
