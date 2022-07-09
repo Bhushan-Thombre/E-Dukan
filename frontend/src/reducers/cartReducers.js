@@ -1,9 +1,13 @@
 import {
   CART_ADD_ITEMS,
   CART_REMOVE_ITEMS,
+  CART_SAVE_SHIPPING_ADDRESS,
 } from '../constants/cartConstants.js';
 
-const cartReducer = (state = { cartItems: [] }, action) => {
+const cartReducer = (
+  state = { cartItems: [], shippingAddress: {} },
+  action
+) => {
   switch (action.type) {
     // First check if the product is already present in the cart or not.
     // If the product is already present in the cart then do not add the product again.
@@ -31,6 +35,11 @@ const cartReducer = (state = { cartItems: [] }, action) => {
       return {
         ...state,
         cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+      };
+    case CART_SAVE_SHIPPING_ADDRESS:
+      return {
+        ...state,
+        shippingAddress: action.payload,
       };
     default:
       return state;
