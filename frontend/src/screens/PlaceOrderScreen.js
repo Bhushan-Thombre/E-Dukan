@@ -12,11 +12,15 @@ const PlaceOrderScreen = () => {
     return (Math.round(num * 100) / 100).toFixed(2);
   };
 
+  // To add 2 decimal places to all the items
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
   );
 
+  // If the items price is more than $ 100 than free delivery or else the delivery charges are $100
   cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
+
+  // Apply 15% tax to all orders
   cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)));
   cart.totalPrice =
     Number(cart.itemsPrice) +
