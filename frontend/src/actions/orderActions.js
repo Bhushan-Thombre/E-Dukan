@@ -25,7 +25,7 @@ const createOrder = (order) => async (dispatch, getState) => {
       },
     };
 
-    const res = await axios.get(`api/orders`, order, config);
+    const res = await axios.post('/api/orders', order, config);
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -54,12 +54,11 @@ const getOrderDetails = (id) => async (dispatch, getState) => {
 
     const config = {
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
 
-    const res = await axios.post(`api/orders/${id}`, config);
+    const res = await axios.get(`/api/orders/${id}`, config);
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
