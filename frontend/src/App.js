@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Header from './components/Header';
@@ -13,33 +13,87 @@ import ShippingScreen from './screens/ShippingScreen.js';
 import PaymentScreen from './screens/PaymentScreen.js';
 import PlaceOrderScreen from './screens/PlaceOrderScreen.js';
 import OrderScreen from './screens/OrderScreen.js';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import axios from 'axios';
 
 const App = () => {
+  const [clientID, setClientID] = useState('');
+
+  useEffect(() => {
+    const getClientId = async () => {
+      const { data: clientId } = await axios.get('/api/config/paypal');
+
+      setClientID(clientId);
+    };
+
+    if (!window.paypal) {
+      getClientId();
+    }
+  }, []);
+
+  const initialOptions = {
+    'client-id': clientID,
+    currency: 'USD',
+    intent: 'capture',
+  };
+
   return (
-    <Router>
-      <Header />
-      <main className="py-3">
-        <Container>
-          <Routes>
-            <Route path="/order/:id" element={<OrderScreen />} />
-            <Route path="/shipping" element={<ShippingScreen />} />
-            <Route path="/payment" element={<PaymentScreen />} />
-            <Route path="/placeorder" element={<PlaceOrderScreen />} />
-            <Route path="/login" element={<LoginScreen />} />
-            <Route path="/register" element={<RegisterScreen />} />
-            <Route path="/profile" element={<ProfileScreen />} />
-            <Route path="/product/:id" element={<ProductScreen />} />
-            <Route path="/cart">
-              <Route path=":id" element={<CartScreen />} />
-              <Route path="" element={<CartScreen />} />
-            </Route>
-            <Route path="/" element={<HomeScreen />} />
-          </Routes>
-        </Container>
-      </main>
-      <Footer />
-    </Router>
+    <>
+      {clientID && (
+        <PayPalScriptProvider options={initialOptions}>
+          <Router>
+            <Header />
+            <main className="py-3">
+              <Container>
+                <Routes>
+                  <Route path="/order/:id" element={<OrderScreen />} />
+                  <Route path="/shipping" element={<ShippingScreen />} />
+                  <Route path="/payment" element={<PaymentScreen />} />
+                  <Route path="/placeorder" element={<PlaceOrderScreen />} />
+                  <Route path="/login" element={<LoginScreen />} />
+                  <Route path="/register" element={<RegisterScreen />} />
+                  <Route path="/profile" element={<ProfileScreen />} />
+                  <Route path="/product/:id" element={<ProductScreen />} />
+                  <Route path="/cart">
+                    <Route path=":id" element={<CartScreen />} />
+                    <Route path="" element={<CartScreen />} />
+                  </Route>
+                  <Route path="/" element={<HomeScreen />} />
+                </Routes>
+              </Container>
+            </main>
+            <Footer />
+          </Router>
+        </PayPalScriptProvider>
+      )}
+    </>
   );
+
+  // return (
+  //   <Router>
+  //     <Header />
+  //     <main className="py-3">
+  //       <Container>
+  //         <Routes>
+  //           <Route path="/order/:id" element={<OrderScreen />} />
+  //           <Route path="/shipping" element={<ShippingScreen />} />
+  //           <Route path="/payment" element={<PaymentScreen />} />
+  //           <Route path="/placeorder" element={<PlaceOrderScreen />} />
+  //           <Route path="/login" element={<LoginScreen />} />
+  //           <Route path="/register" element={<RegisterScreen />} />
+  //           <Route path="/profile" element={<ProfileScreen />} />
+  //           <Route path="/product/:id" element={<ProductScreen />} />
+  //           <Route path="/cart">
+  //             <Route path=":id" element={<CartScreen />} />
+  //             <Route path="" element={<CartScreen />} />
+  //           </Route>
+  //           <Route path="/" element={<HomeScreen />} />
+  //         </Routes>
+  //       </Container>
+  //     </main>
+  //     <Footer />
+  //   </Router>
+  // );
 };
 
 export default App;
