@@ -14,7 +14,9 @@ import {
   USER_UPDATE_PROFILE_REQUEST,
   USER_UPDATE_PROFILE_RESET,
   USER_UPDATE_PROFILE_SUCCESS,
+  USER_DETAILS_RESET,
 } from '../constants/userConstants.js';
+import { ORDER_LIST_MY_RESET } from '../constants/orderConstants.js';
 
 const login = (email, password) => async (dispatch) => {
   try {
@@ -56,6 +58,8 @@ const logout = () => (dispatch) => {
   dispatch({
     type: USER_LOGOUT,
   });
+  dispatch({ type: USER_DETAILS_RESET });
+  dispatch({ type: ORDER_LIST_MY_RESET });
 };
 
 const register = (name, email, password) => async (dispatch) => {

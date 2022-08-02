@@ -13,7 +13,7 @@ const OrderScreen = () => {
   const { id } = useParams();
 
   // Paypal Sdk state
-  const [sdkReady, setSdkReady] = useState(false);
+  // const [sdkReady, setSdkReady] = useState(false);
 
   const [{ isPending, isResolved, isRejected }] = usePayPalScriptReducer();
 
