@@ -14,6 +14,7 @@ import PaymentScreen from './screens/PaymentScreen.js';
 import PlaceOrderScreen from './screens/PlaceOrderScreen.js';
 import OrderScreen from './screens/OrderScreen.js';
 import UserListScreen from './screens/UserListScreen.js';
+import UserEditScreen from './screens/UserEditScreen';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import axios from 'axios';
 
@@ -61,6 +62,10 @@ const App = () => {
                   </Route>
                   <Route path="/" element={<HomeScreen />} />
                   <Route path="/admin/userlist" element={<UserListScreen />} />
+                  <Route
+                    path="/admin/user/:id/edit"
+                    element={<UserEditScreen />}
+                  />
                 </Routes>
               </Container>
             </main>

@@ -126,7 +126,7 @@ const getUserDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    const res = await axios.get(`api/users/${id}`, config);
+    const res = await axios.get(`/api/users/${id}`, config);
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
