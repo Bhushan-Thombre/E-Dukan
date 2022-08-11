@@ -45,7 +45,6 @@ const ProfileScreen = () => {
     }
   }, [dispatch, navigate, userInfo, user]);
 
-  console.log(orders);
   const submitHandler = (e) => {
     e.preventDefault();
 
