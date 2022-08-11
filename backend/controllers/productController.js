@@ -5,6 +5,9 @@ import Product from '../models/productModel.js';
 // @route           GET /api/products
 // @access          Public
 const getProducts = asyncHandler(async (req, res) => {
+  const pageSize = 10;
+  const page = Number(req.query.pageNumber) || 1;
+
   // The reason we are not doing name: req.query.keyword is because
   // than we will have to enter the exact name in the search box
   const keyword = req.query.keyword
@@ -16,9 +19,13 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {};
 
-  const products = await Product.find({ ...keyword });
+  const count = await Product.count({ ...keyword });
 
-  res.json(products);
+  const products = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 // @description     Fetch single product
