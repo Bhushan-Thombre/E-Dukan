@@ -16,7 +16,10 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 app.use(express.json());
-app.use(morgan('combined'));
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 app.get('/', (req, res) => {
   res.send('API is running...');
