@@ -45,13 +45,13 @@ const ProductScreen = () => {
 
   useEffect(() => {
     if (successProductReview) {
-      alert('Review Submitted');
       setRating(0);
       setComment('');
+    }
+    if (!product._id || product._id !== id) {
+      dispatch(listProductDetails(id));
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
     }
-
-    dispatch(listProductDetails(id));
   }, [dispatch, id, successProductReview]);
 
   const addToCartHandler = () => {
@@ -146,6 +146,7 @@ const ProductScreen = () => {
                       className="btn-block"
                       type="button"
                       disabled={product.countInStock === 0}
+                      style={{ background: '#ff9f00' }}
                     >
                       Add to Cart
                     </Button>
@@ -169,6 +170,12 @@ const ProductScreen = () => {
                 ))}
                 <ListGroup.Item>
                   <h2>Write a Customer Review</h2>
+                  {successProductReview && (
+                    <Message variant="success">
+                      Review Submitted Successfully
+                    </Message>
+                  )}
+                  {loadingProductReview && <Loader />}
                   {errorProductReview && (
                     <Message variant="danger">{errorProductReview}</Message>
                   )}
@@ -198,7 +205,7 @@ const ProductScreen = () => {
                           onChange={(e) => setComment(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
-                      <Button type="submit" variant="primary">
+                      <Button type="submit" style={{ background: '#fb641b' }}>
                         Submit
                       </Button>
                     </Form>

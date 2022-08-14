@@ -106,7 +106,7 @@ const ProfileScreen = () => {
             ></Form.Control>
           </Form.Group>
 
-          <Button type="submit" variant="primary">
+          <Button type="submit" style={{ background: '#fb641b' }}>
             Update
           </Button>
         </Form>
@@ -150,10 +150,11 @@ const ProfileScreen = () => {
                     )}
                   </td>
                   <td>
-                    <LinkContainer to={`/order/${order._id}`}>
-                      <Button className="btn-sm" variant="dark">
-                        Details
-                      </Button>
+                    <LinkContainer
+                      to={`/order/${order._id}`}
+                      style={{ background: '#ff9f00' }}
+                    >
+                      <Button className="btn-sm">Details</Button>
                     </LinkContainer>
                   </td>
                 </tr>

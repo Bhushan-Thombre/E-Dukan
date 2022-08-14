@@ -50,7 +50,6 @@ const ProductListScreen = () => {
 
     if (successCreate) {
       navigate(`/admin/products/${createdProduct._id}/edit`);
-      console.log(createdProduct._id);
     } else {
       dispatch(listProducts('', pageNumber));
     }
@@ -125,6 +124,7 @@ const ProductListScreen = () => {
                       variant="danger"
                       className="btn-sm"
                       onClick={() => deleteHandler(product._id)}
+                      style={{ background: '#ff9f00' }}
                     >
                       <i className="fas fa-trash"></i>
                     </Button>

@@ -16,9 +16,9 @@ import {
   ORDER_LIST_SUCCESS,
   ORDER_DELIVER_FAIL,
   ORDER_DELIVER_REQUEST,
-  ORDER_DELIVER_RESET,
   ORDER_DELIVER_SUCCESS,
 } from '../constants/orderConstants.js';
+import { CART_CLEAR_ITEMS } from '../constants/cartConstants.js';
 import axios from 'axios';
 
 const createOrder = (order) => async (dispatch, getState) => {
@@ -44,6 +44,12 @@ const createOrder = (order) => async (dispatch, getState) => {
       type: ORDER_CREATE_SUCCESS,
       payload: res.data,
     });
+    // Remove the item from the cart if it is paid.
+    dispatch({
+      type: CART_CLEAR_ITEMS,
+      payload: res.data,
+    });
+    localStorage.removeItem('cartItems');
   } catch (error) {
     dispatch({
       type: ORDER_CREATE_FAIL,

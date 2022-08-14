@@ -1,5 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+
+// If the value >= 1 then we render a full star, else if the value is >= 0.5 then we render a half star
+// else we render a empty star
 
 const Rating = ({ value, text, color }) => {
   return (

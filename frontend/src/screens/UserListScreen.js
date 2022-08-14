@@ -61,10 +61,10 @@ const UserListScreen = () => {
                   <a href={`mailto:${user.email}`}>{user.email}</a>
                 </td>
                 <td>
-                  {users.isAdmin ? (
-                    <i className="fas fa-check" style={{ color: 'green' }}></i>
+                  {user.isAdmin ? (
+                    <i className="fas fa-check" style={{ color: 'green' }} />
                   ) : (
-                    <i classsName="fas fa-times" style={{ color: 'red' }}></i>
+                    <i classsName="fas fa-times" style={{ color: 'red' }} />
                   )}
                 </td>
                 <td>
@@ -77,6 +77,7 @@ const UserListScreen = () => {
                     variant="danger"
                     className="btn-sm"
                     onClick={() => deleteHandler(user._id)}
+                    style={{ background: '#ff9f00' }}
                   >
                     <i className="fas fa-trash"></i>
                   </Button>

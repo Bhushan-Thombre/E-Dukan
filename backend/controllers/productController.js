@@ -19,8 +19,10 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {};
 
+  // Count the number of products on the page
   const count = await Product.count({ ...keyword });
 
+  // Find those products and limit number of products on given page
   const products = await Product.find({ ...keyword })
     .limit(pageSize)
     .skip(pageSize * (page - 1));

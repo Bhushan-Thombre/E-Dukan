@@ -16,8 +16,10 @@ const HomeScreen = () => {
   const keyword = params.keyword;
   const pageNumber = params.pageNumber || 1;
 
+  // To dispatch a action
   const dispatch = useDispatch();
 
+  // To grab state from the store
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
 

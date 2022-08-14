@@ -87,7 +87,7 @@ const RegisterScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type="submit" variant="primary">
+        <Button type="submit" style={{ background: '#fb641b' }}>
           Register
         </Button>
       </Form>

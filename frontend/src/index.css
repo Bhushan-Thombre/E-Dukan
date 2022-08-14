@@ -25,17 +25,18 @@ h2 {
 }
 
 .footer {
-  background-color: #343a40;
+  /* background-color: #343a40; */
+  background-color: #152336;
   color: #ffffff;
 }
-
-/* .footer h4, a {
+/* 
+.footer h4, a {
   color: #ffffff;
-}
+} */
 
 .footer hr {
   background-color: #ffffff;
-} */
+}
 
 /* carousel */
 .carousel-item-next,
