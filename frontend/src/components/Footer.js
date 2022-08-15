@@ -40,8 +40,8 @@ const Footer = () => {
               </a>
             </div>
             <div className="text-center my-3">
-              <a href="/" style={{ color: '#ffffff' }}>
-                About
+              <a href="/register" style={{ color: '#ffffff' }}>
+                Register
               </a>
             </div>
           </Col>
@@ -53,9 +53,18 @@ const Footer = () => {
               <ListGroup.Item style={{ background: '#152336' }}>
                 <div>We are now open-sourced. Contribute and earn rewards!</div>
               </ListGroup.Item>
-              <Button style={{ background: 'orange' }}>
-                Contribute on GitHub
-              </Button>
+              <a
+                rel="noopener noreferrer"
+                href="https://github.com/Bhushan-Thombre/E-Dukan"
+                target="_blank"
+              >
+                <Button
+                  style={{ background: 'orange' }}
+                  className="btn btn-block rounded"
+                >
+                  Contribute on GitHub
+                </Button>
+              </a>
             </ListGroup>
           </Col>
           <Col sm={12} md={6} lg={4} xl={3}>
@@ -82,6 +91,7 @@ const Footer = () => {
           </Col>
           <Col className="text-center py-3" md={4}>
             <a
+              rel="noopener noreferrer"
               href="https://www.linkedin.com/in/bhushan-thombre-209910207/"
               target="_blank"
               style={{ color: '#ffffff' }}
@@ -89,6 +99,7 @@ const Footer = () => {
               <i className="fa-brands fa-linkedin fa-lg mx-2"></i>
             </a>
             <a
+              rel="noopener noreferrer"
               href="https://twitter.com/bhushanat11"
               target="_blank"
               style={{ color: '#ffffff' }}
@@ -96,6 +107,7 @@ const Footer = () => {
               <i className="fa-brands fa-twitter fa-lg mx-2"></i>
             </a>
             <a
+              rel="noopener noreferrer"
               href="https://github.com/Bhushan-Thombre"
               target="_blank"
               style={{ color: '#ffffff' }}
@@ -103,6 +115,7 @@ const Footer = () => {
               <i className="fa-brands fa-github fa-lg mx-2"></i>
             </a>
             <a
+              rel="noopener noreferrer"
               href="https://www.instagram.com/_tbhushan._/"
               target="_blank"
               style={{ color: '#ffffff' }}

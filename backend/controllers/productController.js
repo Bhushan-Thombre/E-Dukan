@@ -5,7 +5,7 @@ import Product from '../models/productModel.js';
 // @route           GET /api/products
 // @access          Public
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 10;
+  const pageSize = 8;
   const page = Number(req.query.pageNumber) || 1;
 
   // The reason we are not doing name: req.query.keyword is because
@@ -130,7 +130,7 @@ const createProductReview = asyncHandler(async (req, res) => {
 
     product.reviews.push(review);
 
-    product.numReviews = product.reviews.lenght;
+    product.numReviews = product.reviews.length;
 
     product.rating =
       product.reviews.reduce((acc, curr) => curr.rating + acc, 0) /
