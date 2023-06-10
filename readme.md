@@ -23,7 +23,7 @@ The web application is completely made using the MERN stack, i.e., frontend usin
 ## eDukan
 
 <p align='center'>
-    <img src='./screenshot/Screenshot.png'>
+    <img src='./screenshot/Photo.png'>
 </p>
 
 <p align='center'>
