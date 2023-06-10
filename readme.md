@@ -26,6 +26,10 @@ The web application is completely made using the MERN stack, i.e., frontend usin
     <img src='./screenshot/Screenshot.png'>
 </p>
 
+<p align='center'>
+    <img src='./screenshot/Screenshot 1.png'>
+</p>
+
 ## App Walkthrough
 
 The app supports basic user authentication and authorization using bcrypt.js for hashing and encrypting passwords and JsonWebToken for authorization. The user information is then stored in local storage for maintaining sessions.
